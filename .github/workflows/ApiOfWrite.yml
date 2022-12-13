@@ -13,7 +13,7 @@ on:
     - cron: '12 1 * * *'
   watch:
     types: [started]
-  workflow_dispatch:   
+  workflow_dispatch:      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
     #if: github.event.repository.owner.id == github.event.sender.id  # Self-ordered start
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@master
     - name: Install requests and xlsxwriter #安装模块
       run: |
         pip install requests

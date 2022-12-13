@@ -13,12 +13,11 @@ on:
     - cron: '12 */6 * * 1-5'
   watch:
     types: [started]
-
+  workflow_dispatch:   
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: (github.event.repository.owner.id == github.event.sender.id) || ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}  # Self-ordered start
-    #if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
     steps:
     - name: Checkout
       uses: actions/checkout@v3

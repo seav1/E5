@@ -26,12 +26,12 @@ jobs:
       run: |
         pip install requests
         pip install xlsxwriter
-    - name: run api.Write #api调用
       - name: Delete old workflow runs
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}   # replace this with your own repository such as >> owner/repo
-          older-than-seconds: 86400          # remove all workflow runs older than 1 day >> 24*60*60=86400    
+          older-than-seconds: 86400          # remove all workflow runs older than 1 day >> 24*60*60=86400  
+    - name: run api.Write #api调用
       env: 
         CITY: ${{ secrets.CITY }} 
         EMAIL: ${{ secrets.EMAIL }} 

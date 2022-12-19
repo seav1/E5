@@ -144,24 +144,6 @@ def taskWrite(a,taskname):
     print("    删除任务列表")
     apiReq('delete',a,url)    
     
-def teamWrite(a,channelname):
-    url=r'https://graph.microsoft.com/v1.0/me/joinedTeams'
-    print("    获取team")
-    jsontxt = json.loads(apiReq('get',a,url))
-    objectlist=jsontxt['value']
-    #创建
-    print("    创建team频道")
-    data={
-         "displayName": channelname,
-         "description": "This channel is where we debate all future architecture plans",
-         "membershipType": "standard"
-         }
-    url=r'https://graph.microsoft.com/v1.0/teams/'+objectlist[0]['id']+r'/channels'
-    jsontxt = json.loads(apiReq('post',a,url,json.dumps(data)))
-    url=r'https://graph.microsoft.com/v1.0/teams/'+objectlist[0]['id']+r'/channels/'+jsontxt['id']
-    print("    删除team频道")
-    apiReq('delete',a,url)
-
 def onenoteWrite(a,notename):
     url=r'https://graph.microsoft.com/v1.0/me/onenote/notebooks'
     data={
